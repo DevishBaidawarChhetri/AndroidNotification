@@ -5,13 +5,14 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManagerCompat;
-    private Button btnFirstNotification, btnSecondNotification;
+    private Button btnFirstNotification, btnSecondNotification, btnShowServicesActivities, btnBroadCastActivity;
     int count = 0;
 
     @Override
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnFirstNotification = findViewById(R.id.btnFirstNotification);
         btnSecondNotification = findViewById(R.id.btnSecondNotification);
+        btnShowServicesActivities = findViewById(R.id.btnShowServicesActivities);
+        btnBroadCastActivity = findViewById(R.id.btnBroadCastActivity);
 
         btnFirstNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DisplaySecondNotification();
+            }
+        });
+        btnShowServicesActivities.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ServicesActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnBroadCastActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BroadCastActivity.class);
+                startActivity(intent);
             }
         });
 
